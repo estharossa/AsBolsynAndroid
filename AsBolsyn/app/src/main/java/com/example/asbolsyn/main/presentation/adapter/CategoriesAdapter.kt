@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.asbolsyn.databinding.ItemMainCategoryBinding
 import com.example.asbolsyn.main.presentation.model.MainCategory
 
-class CategoriesAdapter(private val categories: List<MainCategory>) :
+class CategoriesAdapter(private val categories: List<MainCategory> = listOf()) :
     RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

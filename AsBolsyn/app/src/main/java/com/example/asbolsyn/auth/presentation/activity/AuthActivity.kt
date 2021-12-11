@@ -3,12 +3,12 @@ package com.example.asbolsyn.auth.presentation.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
-import com.example.asbolsyn.main.presentation.activity.MainActivity
 import com.example.asbolsyn.R
 import com.example.asbolsyn.auth.presentation.view.SmsConfirmationView
 import com.example.asbolsyn.auth.presentation.viewmodel.AuthState
 import com.example.asbolsyn.auth.presentation.viewmodel.AuthViewModel
 import com.example.asbolsyn.databinding.ActivityLoginBinding
+import com.example.asbolsyn.main.presentation.activity.MainActivity
 import com.example.asbolsyn.utils.hideSoftKeyboard
 import com.google.android.material.snackbar.Snackbar
 import com.redmadrobot.inputmask.MaskedTextChangedListener
@@ -18,6 +18,7 @@ class AuthActivity : AppCompatActivity() {
 
     companion object {
         private const val PHONE_INPUT_MASK = "+7 ([000]) [000]-[00]-[00]"
+        private const val TAG = "PhoneAuthActivity"
     }
 
     private lateinit var binding: ActivityLoginBinding
@@ -26,7 +27,6 @@ class AuthActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -43,6 +43,7 @@ class AuthActivity : AppCompatActivity() {
 
         binding.smsConfirmationView.onChangeListener = SmsConfirmationView.OnChangeListener { code, isComplete ->
             if (isComplete) {
+                binding.root.hideSoftKeyboard(this)
                 authViewModel.checkCode(code)
             }
         }

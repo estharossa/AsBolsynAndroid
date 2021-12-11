@@ -3,11 +3,17 @@ package com.example.asbolsyn.main.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.asbolsyn.R
 import com.example.asbolsyn.databinding.ItemMainRestaurantBinding
-import com.example.asbolsyn.main.presentation.model.MainRestaurant
+import com.example.asbolsyn.main.data.model.RestaurantsResponse
 
-class RestaurantsAdapter(private val restaurants: List<MainRestaurant>) :
+class RestaurantsAdapter(private var restaurants: List<RestaurantsResponse.Item> = listOf()) :
     RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>() {
+
+    fun updateItems(restaurants: List<RestaurantsResponse.Item>) {
+        this.restaurants = restaurants
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(ItemMainRestaurantBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -23,10 +29,10 @@ class RestaurantsAdapter(private val restaurants: List<MainRestaurant>) :
         private val binding: ItemMainRestaurantBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(restaurant: MainRestaurant) {
+        fun bind(restaurant: RestaurantsResponse.Item) {
             with(binding) {
-                backgroundImage.setImageResource(restaurant.backgroundImage)
-                title.text = restaurant.title
+                backgroundImage.setImageResource(R.drawable.ic_restaurant_placeholder)
+                title.text = restaurant.restaurantName
                 category.text = restaurant.category
             }
         }

@@ -13,6 +13,8 @@ import android.view.inputmethod.InputConnection
 import android.widget.LinearLayout
 import android.widget.Space
 import androidx.core.view.children
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.core.view.postDelayed
 import com.example.asbolsyn.utils.CommonConstants
 import com.example.asbolsyn.utils.hideSoftKeyboard
@@ -110,10 +112,12 @@ class SmsConfirmationView @JvmOverloads constructor(
         super.onAttachedToWindow()
 
         setOnKeyListener { _, keyCode, event -> handleKeyEvent(keyCode, event) }
-        postDelayed(KEYBOARD_AUTO_SHOW_DELAY) {
-            requestFocus()
-            showSoftKeyboard(context)
-        }
+//        postDelayed(KEYBOARD_AUTO_SHOW_DELAY) {
+//            if (!isGone) {
+//                requestFocus()
+//                showSoftKeyboard(context)
+//            }
+//        }
 
         if (smsDetectionMode == SmsDetectionMode.DISABLED) return
     }

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "526181960790",
+    "project_id": "asbolsyn-b012d",
+    "storage_bucket": "asbolsyn-b012d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526181960790:android:b9707f2a393c77d1973ff7",
+        "android_client_info": {
+          "package_name": "com.example.asbolsyn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526181960790-fvjef6ie02cptb12mpdn1f96bjlvo4gq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.asbolsyn",
+            "certificate_hash": "634ca081ba0aa2c607d0bf3ab9304b7fcaa3ac14"
+          }
+        },
+        {
+          "client_id": "526181960790-ap9qehr0f4dh1c116kokfgjsn6kuf3sl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmndct6kl-MTiiY6duqBwFUeFT9DxfbTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526181960790-ap9qehr0f4dh1c116kokfgjsn6kuf3sl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

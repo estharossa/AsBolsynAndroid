@@ -4,14 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.asbolsyn.R
 import com.example.asbolsyn.databinding.FragmentMainBinding
+import com.example.asbolsyn.main.data.model.RestaurantsResponse
+import com.example.asbolsyn.main.presentation.viewmodel.RestaurantsViewModel
 import com.example.asbolsyn.main.presentation.adapter.CategoriesAdapter
 import com.example.asbolsyn.main.presentation.adapter.RestaurantsAdapter
-import com.example.asbolsyn.main.presentation.model.MainCategory
-import com.example.asbolsyn.main.presentation.model.MainRestaurant
+import com.example.asbolsyn.main.presentation.viewmodel.RestaurantsAction
+import com.example.asbolsyn.main.presentation.viewmodel.RestaurantsState
+import com.example.asbolsyn.utils.AlertManager
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
 
@@ -22,6 +27,8 @@ class MainFragment : Fragment() {
     private var categoriesAdapter: CategoriesAdapter? = null
     private var restaurantsAdapter: RestaurantsAdapter? = null
 
+    private val viewModel by viewModel<RestaurantsViewModel>()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentMainBinding.inflate(inflater)
         return binding.root
@@ -31,18 +38,31 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupViews()
+        configureObservers()
+
+        viewModel.dispatch(RestaurantsAction.FetchRestaurants)
+    }
+
+    private fun configureObservers() {
+        viewModel.restaurantsState.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is RestaurantsState.Error -> showError(state.message) { viewModel.dispatch(RestaurantsAction.FetchRestaurants) }
+                is RestaurantsState.LoadingState -> configureLoadingState(state.isLoading)
+                is RestaurantsState.RestaurantsLoaded -> showRestaurants(state.restaurants)
+            }
+        }
     }
 
     private fun setupViews() {
         with(binding) {
-            categoriesAdapter = CategoriesAdapter(getCategories())
+            categoriesAdapter = CategoriesAdapter()
 
             with(categoriesRecyclerView) {
                 adapter = categoriesAdapter
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             }
 
-            restaurantsAdapter = RestaurantsAdapter(getRestaurants())
+            restaurantsAdapter = RestaurantsAdapter()
             with(restaurantsRecyclerView) {
                 adapter = restaurantsAdapter
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -50,64 +70,24 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun getCategories() = listOf<MainCategory>(
-        MainCategory(
-            title = "FastFood",
-            icon = R.drawable.ic_category_fastfood
-        ),
-        MainCategory(
-            title = "Завтрак",
-            icon = R.drawable.ic_category_breakfast
-        ),
-        MainCategory(
-            title = "Ужин",
-            icon = R.drawable.ic_category_dinner
-        ),
-        MainCategory(
-            title = "Обед",
-            icon = R.drawable.ic_category_lunch
-        ),
-        MainCategory(
-            title = "Русская кухня",
-            icon = R.drawable.ic_category_placeholder
-        ),
-        MainCategory(
-            title = "Восточная Кухня",
-            icon = R.drawable.ic_category_placeholder
-        ),
-        MainCategory(
-            title = "Корейская кухня",
-            icon = R.drawable.ic_category_placeholder
-        ),
-        MainCategory(
-            title = "Индийская кухня",
-            icon = R.drawable.ic_category_placeholder
-        )
-    )
+    private fun showRestaurants(restaurants: List<RestaurantsResponse.Item>) {
+        restaurantsAdapter?.updateItems(restaurants)
+    }
 
-    private fun getRestaurants() = listOf<MainRestaurant>(
-        MainRestaurant(
-            title = "Del Papa",
-            category = "Итальянская",
-            freeSeatsNumber = 4,
-            rate = 5.0,
-            backgroundImage = R.drawable.ic_restaurant_placeholder
-        ),
-        MainRestaurant(
-            title = "Del Papa",
-            category = "Итальянская",
-            freeSeatsNumber = 4,
-            rate = 5.0,
-            backgroundImage = R.drawable.ic_restaurant_placeholder
-        ),
-        MainRestaurant(
-            title = "Del Papa",
-            category = "Итальянская",
-            freeSeatsNumber = 4,
-            rate = 5.0,
-            backgroundImage = R.drawable.ic_restaurant_placeholder
-        )
-    )
+    private fun configureLoadingState(isLoading: Boolean) {
+        binding.container.isGone = isLoading
+        binding.progressBar.isGone = !isLoading
+    }
+
+    private fun showError(message: String? = null, action: (() -> Unit)? = null) {
+        AlertManager.showOKAlert(
+            context = requireContext(),
+            message = message ?: getString(R.string.error_general),
+            cancellable = false
+        ) {
+            action?.invoke()
+        }
+    }
 
     override fun onDestroy() {
         _binding = null

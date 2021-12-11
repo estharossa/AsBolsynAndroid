@@ -10,4 +10,13 @@
     <string name="almaty_city">Алматы</string>
     <string name="restaurant_search_hint">Поиск ресторана</string>
 
+    <string name="item_restaurants">Заведения</string>
+    <string name="item_profile">Профиль</string>
+    <string name="item_order">Бронирование</string>
+
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="error">Ошибка</string>
+    <string name="error_general">Извините, произошла ошибка. Попробуйте, пожалуйста, снова</string>
+    <string name="ok">Хорошо</string>
 </resources>
