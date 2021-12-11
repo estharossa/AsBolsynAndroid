@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">AsBolsyn</string>
+
+    <string name="auth_phone_field_hint">Номер телефона</string>
+    <string name="auth_send_code">Отправить код подтверждения</string>
+    <string name="auth_sms_resend">Не получили код? Отправить еще раз</string>
+    <string name="auth_sms_resend_suffix">Отправить еще раз</string>
+    <string name="auth_phone_number_validation_error">Некорректный номер телефона</string>
+
+    <string name="almaty_city">Алматы</string>
+    <string name="restaurant_search_hint">Поиск ресторана</string>
+
 </resources>
