@@ -3,6 +3,8 @@ package com.example.asbolsyn.main.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.asbolsyn.R
 import com.example.asbolsyn.databinding.ItemMainRestaurantBinding
 import com.example.asbolsyn.main.data.model.RestaurantsResponse
@@ -34,6 +36,14 @@ class RestaurantsAdapter(private var restaurants: List<RestaurantsResponse.Item>
                 backgroundImage.setImageResource(R.drawable.ic_restaurant_placeholder)
                 title.text = restaurant.restaurantName
                 category.text = restaurant.category
+
+                Glide.with(root.context)
+                    .load(restaurant.img)
+                    .placeholder(R.drawable.ic_restaurant_placeholder)
+                    .error(R.drawable.ic_restaurant_placeholder)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .fitCenter()
+                    .into(backgroundImage)
             }
         }
     }

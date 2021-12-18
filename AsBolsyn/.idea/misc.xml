@@ -5,8 +5,11 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.35260416666666666" />
         <entry key="app/src/main/res/drawable/background_bottom_navigation_item.xml" value="0.2234375" />
+        <entry key="app/src/main/res/drawable/background_bottom_navigation_item_text.xml" value="0.340625" />
+        <entry key="app/src/main/res/drawable/background_order_button.xml" value="0.340625" />
         <entry key="app/src/main/res/drawable/background_primary_rounded.xml" value="0.340625" />
         <entry key="app/src/main/res/drawable/background_primary_rounded_solid.xml" value="0.3536458333333333" />
+        <entry key="app/src/main/res/drawable/background_rounded_image.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/drawable/ic_category_fastfood.xml" value="0.3353846153846154" />
         <entry key="app/src/main/res/drawable/ic_kazakhstan_flag.xml" value="0.3353846153846154" />
         <entry key="app/src/main/res/drawable/ic_navigation_item_order.xml" value="0.3859375" />

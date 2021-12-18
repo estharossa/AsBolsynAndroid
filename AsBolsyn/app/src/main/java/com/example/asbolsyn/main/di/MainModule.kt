@@ -1,7 +1,8 @@
 package com.example.asbolsyn.main.di
 
-import com.example.asbolsyn.main.data.RestaurantsRepositoryImpl
+import com.example.asbolsyn.main.data.repository.RestaurantsRepositoryImpl
 import com.example.asbolsyn.main.data.service.RestaurantsService
+import com.example.asbolsyn.main.domain.LoadCategories
 import com.example.asbolsyn.main.domain.LoadRestaurants
 import com.example.asbolsyn.main.domain.RestaurantsRepository
 import com.example.asbolsyn.main.presentation.viewmodel.RestaurantsViewModel
@@ -12,12 +13,19 @@ import org.koin.dsl.module
 private val authPresentationModule = module {
     viewModel {
         RestaurantsViewModel(
-            loadRestaurants = get()
+            loadRestaurants = get(),
+            loadCategories = get()
         )
     }
 }
 
 private val authDomainModule = module {
+    factory {
+        LoadCategories(
+            repository = get()
+        )
+    }
+
     factory {
         LoadRestaurants(
             repository = get()

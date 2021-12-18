@@ -17,13 +17,18 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_nav_graph" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border_color" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_primary"
+        android:background="@color/color_white"
         app:itemIconTint="@drawable/background_bottom_navigation_item"
-        app:itemTextColor="@color/white"
+        app:itemTextColor="@drawable/background_bottom_navigation_item"
         app:menu="@menu/bottom_navigation" />
 
 </LinearLayout>

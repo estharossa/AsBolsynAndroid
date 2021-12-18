@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.asbolsyn.R
 import com.example.asbolsyn.databinding.FragmentMainBinding
+import com.example.asbolsyn.main.data.model.CategoriesResponse
 import com.example.asbolsyn.main.data.model.RestaurantsResponse
 import com.example.asbolsyn.main.presentation.viewmodel.RestaurantsViewModel
 import com.example.asbolsyn.main.presentation.adapter.CategoriesAdapter
@@ -48,7 +49,7 @@ class MainFragment : Fragment() {
             when (state) {
                 is RestaurantsState.Error -> showError(state.message) { viewModel.dispatch(RestaurantsAction.FetchRestaurants) }
                 is RestaurantsState.LoadingState -> configureLoadingState(state.isLoading)
-                is RestaurantsState.RestaurantsLoaded -> showRestaurants(state.restaurants)
+                is RestaurantsState.RestaurantsLoaded -> submitList(state.restaurants, state.categories)
             }
         }
     }
@@ -70,8 +71,9 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun showRestaurants(restaurants: List<RestaurantsResponse.Item>) {
+    private fun submitList(restaurants: List<RestaurantsResponse.Item>, categories: List<CategoriesResponse.Item>) {
         restaurantsAdapter?.updateItems(restaurants)
+        categoriesAdapter?.updateItems(categories)
     }
 
     private fun configureLoadingState(isLoading: Boolean) {
