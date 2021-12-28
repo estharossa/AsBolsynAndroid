@@ -1,4 +1,4 @@
-package com.example.asbolsyn.utils
+package com.example.asbolsyn.utils.extensions
 
 fun String.phoneGoodFormat() = this.replace("(", "")
     .replace(")", "")

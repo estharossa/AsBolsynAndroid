@@ -11,9 +11,11 @@
     <color name="color_white">#FFFFFF</color>
     <color name="color_text_field_hint_color">#838383</color>
     <color name="color_primary">#5680E9</color>
+    <color name="color_primary_dark">#5680e9</color>
     <color name="color_text_main">#383838</color>
     <color name="blue">#825680E9</color>
     <color name="color_gray">#F2F2F2</color>
     <color name="blue_light">#EBF0FC</color>
     <color name="border_color">#C4C4C4</color>
+    <color name="color_red">#E95656</color>
 </resources>

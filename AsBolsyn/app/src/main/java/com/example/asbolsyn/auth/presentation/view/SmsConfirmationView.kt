@@ -13,12 +13,9 @@ import android.view.inputmethod.InputConnection
 import android.widget.LinearLayout
 import android.widget.Space
 import androidx.core.view.children
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
-import androidx.core.view.postDelayed
 import com.example.asbolsyn.utils.CommonConstants
-import com.example.asbolsyn.utils.hideSoftKeyboard
-import com.example.asbolsyn.utils.showSoftKeyboard
+import com.example.asbolsyn.utils.extensions.hideSoftKeyboard
+import com.example.asbolsyn.utils.extensions.showSoftKeyboard
 
 class SmsConfirmationView @JvmOverloads constructor(
     context: Context,

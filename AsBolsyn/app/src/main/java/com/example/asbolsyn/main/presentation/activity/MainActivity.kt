@@ -8,6 +8,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.asbolsyn.R
 import com.example.asbolsyn.databinding.ActivityMainBinding
+import com.example.asbolsyn.main.presentation.viewmodel.OrderViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.example.asbolsyn.utils.base
+package com.example.asbolsyn.utils.network.data.model
 
 sealed class Either<out L : Any, out R : Any> {
     data class Left<out L : Any>(val left: L) : Either<L, Nothing>()

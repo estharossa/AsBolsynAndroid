@@ -9,8 +9,10 @@ import com.example.asbolsyn.R
 import com.example.asbolsyn.databinding.ItemMainRestaurantBinding
 import com.example.asbolsyn.main.data.model.RestaurantsResponse
 
-class RestaurantsAdapter(private var restaurants: List<RestaurantsResponse.Item> = listOf()) :
-    RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>() {
+class RestaurantsAdapter(
+    private var restaurants: List<RestaurantsResponse.Item> = listOf(),
+    private val onOrderClick: () -> Unit
+) : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>() {
 
     fun updateItems(restaurants: List<RestaurantsResponse.Item>) {
         this.restaurants = restaurants
@@ -44,6 +46,10 @@ class RestaurantsAdapter(private var restaurants: List<RestaurantsResponse.Item>
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .fitCenter()
                     .into(backgroundImage)
+
+                orderButton.setOnClickListener {
+                    onOrderClick()
+                }
             }
         }
     }

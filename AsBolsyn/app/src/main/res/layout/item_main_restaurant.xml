@@ -62,9 +62,10 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/order_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/background_order_button"
+                    android:background="@drawable/background_primary_light_rounded"
                     android:paddingHorizontal="12dp"
                     android:stateListAnimator="@null"
                     android:text="@string/order_table"

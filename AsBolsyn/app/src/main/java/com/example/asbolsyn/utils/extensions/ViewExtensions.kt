@@ -1,4 +1,4 @@
-package com.example.asbolsyn.utils
+package com.example.asbolsyn.utils.extensions
 
 import android.content.Context
 import android.view.View

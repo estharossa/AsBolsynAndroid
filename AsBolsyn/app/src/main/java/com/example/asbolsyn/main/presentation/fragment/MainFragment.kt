@@ -63,11 +63,22 @@ class MainFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             }
 
-            restaurantsAdapter = RestaurantsAdapter()
+            restaurantsAdapter = RestaurantsAdapter(
+                onOrderClick = {
+                    openOrderBottomSheet()
+                }
+            )
+
             with(restaurantsRecyclerView) {
                 adapter = restaurantsAdapter
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             }
+        }
+    }
+
+    private fun openOrderBottomSheet() {
+        OrderItemRoundedBottomSheetDialogFragment.newInstance().also {
+            it.show(childFragmentManager, it.tag)
         }
     }
 

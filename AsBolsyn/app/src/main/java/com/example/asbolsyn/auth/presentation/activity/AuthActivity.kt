@@ -9,7 +9,7 @@ import com.example.asbolsyn.auth.presentation.viewmodel.AuthState
 import com.example.asbolsyn.auth.presentation.viewmodel.AuthViewModel
 import com.example.asbolsyn.databinding.ActivityLoginBinding
 import com.example.asbolsyn.main.presentation.activity.MainActivity
-import com.example.asbolsyn.utils.hideSoftKeyboard
+import com.example.asbolsyn.utils.extensions.hideSoftKeyboard
 import com.google.android.material.snackbar.Snackbar
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import org.koin.androidx.viewmodel.ext.android.viewModel

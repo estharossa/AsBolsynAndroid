@@ -3,7 +3,7 @@ package com.example.asbolsyn.auth.presentation.view
 import android.content.Context
 import android.util.AttributeSet
 import com.example.asbolsyn.R
-import com.example.asbolsyn.utils.getCompatColor
+import com.example.asbolsyn.utils.extensions.getCompatColor
 
 internal object SmsConfirmationViewStyleUtils {
 
