@@ -26,6 +26,8 @@ class OrderItemRoundedBottomSheetDialogFragment : RoundedBottomSheetDialogFragme
 
     private val orderViewModel by viewModel<OrderViewModel>()
 
+    var onOrderClicked: (() -> Unit)? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentOrderItemBottomSheetBinding.inflate(inflater)
         return binding.root
@@ -84,6 +86,7 @@ class OrderItemRoundedBottomSheetDialogFragment : RoundedBottomSheetDialogFragme
             }
 
             orderButton.setOnClickListener {
+                onOrderClicked?.invoke()
                 dismiss()
             }
         }

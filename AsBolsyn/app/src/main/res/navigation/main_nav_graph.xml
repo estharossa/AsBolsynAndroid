@@ -8,7 +8,12 @@
     <fragment
         android:id="@+id/main_fragment"
         android:name="com.example.asbolsyn.main.presentation.fragment.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment">
+
+        <action
+            android:id="@+id/action_mainFragment_to_ordersFragment"
+            app:destination="@id/orders_fragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/profile_fragment"

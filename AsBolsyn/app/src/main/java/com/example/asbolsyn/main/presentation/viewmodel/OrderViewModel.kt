@@ -104,6 +104,7 @@ sealed class OrderAction {
     object DecrementTime : OrderAction()
     object IncrementSeat : OrderAction()
     object DecrementSeat : OrderAction()
+    object OrderPlace : OrderAction()
 }
 
 sealed class OrderState {

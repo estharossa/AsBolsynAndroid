@@ -8,12 +8,17 @@ import com.example.asbolsyn.main.data.model.CategoriesResponse
 import com.example.asbolsyn.main.data.model.RestaurantsResponse
 import com.example.asbolsyn.main.domain.Usecase.LoadCategories
 import com.example.asbolsyn.main.domain.Usecase.LoadRestaurants
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class RestaurantsViewModel(
     private val loadRestaurants: LoadRestaurants,
     private val loadCategories: LoadCategories
 ) : ViewModel() {
+
+    companion object {
+        private const val MOCK_ROOM_NUMBER = "A6F81R"
+    }
 
     private val _restaurantsState = MutableLiveData<RestaurantsState>()
     val restaurantsState: LiveData<RestaurantsState>
@@ -25,6 +30,20 @@ class RestaurantsViewModel(
     fun dispatch(action: RestaurantsAction) {
         when (action) {
             is RestaurantsAction.FetchRestaurants -> fetchCategories()
+            is RestaurantsAction.OrderPlace -> orderPlace()
+        }
+    }
+
+    private fun orderPlace() {
+        changeLoadingState(true)
+
+        viewModelScope.launch {
+            // todo: fake order
+
+            delay(1500)
+            _restaurantsState.value = RestaurantsState.OrderSuccess(MOCK_ROOM_NUMBER)
+
+            changeLoadingState(false)
         }
     }
 
@@ -73,6 +92,7 @@ class RestaurantsViewModel(
 
 sealed class RestaurantsAction {
     object FetchRestaurants : RestaurantsAction()
+    object OrderPlace : RestaurantsAction()
 }
 
 sealed class RestaurantsState {
@@ -82,4 +102,6 @@ sealed class RestaurantsState {
         val restaurants: List<RestaurantsResponse.Item>,
         val categories: List<CategoriesResponse.Item>
     ) : RestaurantsState()
+
+    data class OrderSuccess(val roomNumber: String) : RestaurantsState()
 }

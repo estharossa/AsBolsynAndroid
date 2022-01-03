@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/popup_alert_background"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/order_success"
+        android:textColor="@color/color_primary_dark"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/restaurant_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/color_text_main"
+        android:textSize="16sp"
+        tools:text="Заведение: Trattoria" />
+
+    <TextView
+        android:id="@+id/date_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/color_text_main"
+        android:textSize="16sp"
+        tools:text="Дата: 24.01.2020" />
+
+    <TextView
+        android:id="@+id/room_number_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/color_text_main"
+        android:textSize="16sp"
+        tools:text="Код для приглашения друзей: AS8FD" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/navigate_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_primary_rounded_stroked"
+        android:stateListAnimator="@null"
+        android:text="@string/navigate_to_orders"
+        android:textAllCaps="false"
+        android:textColor="@color/color_primary_dark"
+        android:textSize="16sp" />
+
+
+</LinearLayout>

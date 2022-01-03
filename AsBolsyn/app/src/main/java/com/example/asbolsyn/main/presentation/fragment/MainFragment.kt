@@ -1,23 +1,30 @@
 package com.example.asbolsyn.main.presentation.fragment
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.asbolsyn.R
 import com.example.asbolsyn.databinding.FragmentMainBinding
+import com.example.asbolsyn.databinding.FragmentOrderSuccessInfoBinding
 import com.example.asbolsyn.main.data.model.CategoriesResponse
 import com.example.asbolsyn.main.data.model.RestaurantsResponse
 import com.example.asbolsyn.main.presentation.viewmodel.RestaurantsViewModel
 import com.example.asbolsyn.main.presentation.adapter.CategoriesAdapter
 import com.example.asbolsyn.main.presentation.adapter.RestaurantsAdapter
+import com.example.asbolsyn.main.presentation.viewmodel.OrderAction
 import com.example.asbolsyn.main.presentation.viewmodel.RestaurantsAction
 import com.example.asbolsyn.main.presentation.viewmodel.RestaurantsState
 import com.example.asbolsyn.utils.AlertManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
 
 class MainFragment : Fragment() {
 
@@ -50,6 +57,7 @@ class MainFragment : Fragment() {
                 is RestaurantsState.Error -> showError(state.message) { viewModel.dispatch(RestaurantsAction.FetchRestaurants) }
                 is RestaurantsState.LoadingState -> configureLoadingState(state.isLoading)
                 is RestaurantsState.RestaurantsLoaded -> submitList(state.restaurants, state.categories)
+                is RestaurantsState.OrderSuccess -> handleSuccessOrder(state.roomNumber)
             }
         }
     }
@@ -76,8 +84,35 @@ class MainFragment : Fragment() {
         }
     }
 
+    private fun handleSuccessOrder(roomNumber: String) {
+        val binding = FragmentOrderSuccessInfoBinding.inflate(LayoutInflater.from(requireContext()))
+        val orderDialog = AlertManager.getCustomAlert(requireContext(), binding.root)
+
+        with(binding) {
+            restaurantInfo.text = getString(R.string.order_success_restaurant_fmt, "Del Papa")
+            dateInfo.text = getString(R.string.order_success_date_fmt, "25.01.2020, 14-30")
+            roomNumberInfo.text = getString(R.string.order_success_room_fmt, roomNumber)
+
+            navigateButton.setOnClickListener {
+                orderDialog.dismiss()
+
+                val direction = MainFragmentDirections.actionMainFragmentToOrdersFragment()
+                findNavController().navigate(direction)
+            }
+        }
+
+        with(orderDialog) {
+            window?.setBackgroundDrawable(InsetDrawable(ColorDrawable(Color.TRANSPARENT), 20))
+            show()
+        }
+    }
+
     private fun openOrderBottomSheet() {
-        OrderItemRoundedBottomSheetDialogFragment.newInstance().also {
+        OrderItemRoundedBottomSheetDialogFragment.newInstance().apply {
+            onOrderClicked = {
+                viewModel.dispatch(RestaurantsAction.OrderPlace)
+            }
+        }.also {
             it.show(childFragmentManager, it.tag)
         }
     }

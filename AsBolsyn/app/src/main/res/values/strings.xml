@@ -29,4 +29,10 @@
     <string name="default_amount_of_guests">1</string>
     <string name="maximum_amount_of_guests_fmt">Макс. количество гостей: %1$d</string>
     <string name="order">Забронировать</string>
+
+    <string name="order_success">Вы успешно забронировали стол!</string>
+    <string name="order_success_restaurant_fmt">Заведение: %1$s</string>
+    <string name="order_success_date_fmt">Заведение: %1$s</string>
+    <string name="order_success_room_fmt">Код для приглашения друзей: %1$s</string>
+    <string name="navigate_to_orders">Перейти в раздел бронирования</string>
 </resources>
