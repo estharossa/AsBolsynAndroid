@@ -18,4 +18,7 @@
     <color name="blue_light">#EBF0FC</color>
     <color name="border_color">#C4C4C4</color>
     <color name="color_red">#E95656</color>
+    <color name="background_color">#E5E5E5</color>
+    <color name="color_gray_light">#989A9F</color>
+    <color name="color_green">#43BD4F</color>
 </resources>

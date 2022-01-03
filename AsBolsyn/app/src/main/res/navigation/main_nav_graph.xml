@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/orders_fragment"
-        android:name="com.example.asbolsyn.OrderFragment"
+        android:name="com.example.asbolsyn.order.presentation.fragment.OrdersFragment"
         android:label="fragment_order"
         tools:layout="@layout/fragment_order" />
 

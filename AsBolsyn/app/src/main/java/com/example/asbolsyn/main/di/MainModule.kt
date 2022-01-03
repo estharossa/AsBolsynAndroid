@@ -2,9 +2,9 @@ package com.example.asbolsyn.main.di
 
 import com.example.asbolsyn.main.data.repository.RestaurantsRepositoryImpl
 import com.example.asbolsyn.main.data.service.RestaurantsService
-import com.example.asbolsyn.main.domain.Usecase.LoadCategories
-import com.example.asbolsyn.main.domain.Usecase.LoadRestaurants
-import com.example.asbolsyn.main.domain.Repository.RestaurantsRepository
+import com.example.asbolsyn.main.domain.usecase.LoadCategories
+import com.example.asbolsyn.main.domain.usecase.LoadRestaurants
+import com.example.asbolsyn.main.domain.repository.RestaurantsRepository
 import com.example.asbolsyn.main.presentation.viewmodel.OrderViewModel
 import com.example.asbolsyn.main.presentation.viewmodel.RestaurantsViewModel
 import com.example.asbolsyn.utils.network.NetworkKit

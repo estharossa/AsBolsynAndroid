@@ -35,4 +35,11 @@
     <string name="order_success_date_fmt">Заведение: %1$s</string>
     <string name="order_success_room_fmt">Код для приглашения друзей: %1$s</string>
     <string name="navigate_to_orders">Перейти в раздел бронирования</string>
+
+    <string name="order_number_fmt">Заказ %1$s</string>
+    <string name="order_status_active">Активный</string>
+    <string name="order_status_inactive">Завершен</string>
+    <string name="guests_number_fmt">Гости: %1$d</string>
+    <string name="order_restaurant_fmt">Заведение %1$s</string>
+    <string name="my_orders">Мои заказы</string>
 </resources>

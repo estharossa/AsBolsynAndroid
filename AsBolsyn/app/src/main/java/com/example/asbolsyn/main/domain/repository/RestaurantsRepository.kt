@@ -1,4 +1,4 @@
-package com.example.asbolsyn.main.domain.Repository
+package com.example.asbolsyn.main.domain.repository
 
 import com.example.asbolsyn.main.data.model.CategoriesResponse
 import com.example.asbolsyn.main.data.model.RestaurantsResponse

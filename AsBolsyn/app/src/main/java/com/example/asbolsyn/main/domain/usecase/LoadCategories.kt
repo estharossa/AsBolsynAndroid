@@ -1,7 +1,7 @@
-package com.example.asbolsyn.main.domain.Usecase
+package com.example.asbolsyn.main.domain.usecase
 
 import com.example.asbolsyn.main.data.model.CategoriesResponse
-import com.example.asbolsyn.main.domain.Repository.RestaurantsRepository
+import com.example.asbolsyn.main.domain.repository.RestaurantsRepository
 import com.example.asbolsyn.utils.network.data.model.Either
 import com.example.asbolsyn.utils.network.data.model.SuspendableUseCase
 import com.example.asbolsyn.utils.network.data.model.Result

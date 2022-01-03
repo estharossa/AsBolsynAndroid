@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.asbolsyn.main.data.model.CategoriesResponse
 import com.example.asbolsyn.main.data.model.RestaurantsResponse
-import com.example.asbolsyn.main.domain.Usecase.LoadCategories
-import com.example.asbolsyn.main.domain.Usecase.LoadRestaurants
+import com.example.asbolsyn.main.domain.usecase.LoadCategories
+import com.example.asbolsyn.main.domain.usecase.LoadRestaurants
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
