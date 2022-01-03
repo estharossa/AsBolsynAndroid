@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.asbolsyn.R
 import com.example.asbolsyn.databinding.FragmentOrderBinding
+import com.example.asbolsyn.databinding.LayoutToolbarBinding
 import com.example.asbolsyn.order.data.model.OrderItemResponse
 import com.example.asbolsyn.order.presentation.adapter.OrderListAdapter
 import com.example.asbolsyn.order.presentation.viewmodel.CabinetOrdersViewModel
@@ -58,7 +60,8 @@ class OrdersFragment : Fragment() {
         with(binding) {
             ordersAdapter = OrderListAdapter(
                 onOrderClick = {
-
+                    val direction = OrdersFragmentDirections.actionOrdersFragmentToOrderDetailsFragment()
+                    findNavController().navigate(direction)
                 }
             )
 

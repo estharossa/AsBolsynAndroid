@@ -42,4 +42,5 @@
     <string name="guests_number_fmt">Гости: %1$d</string>
     <string name="order_restaurant_fmt">Заведение %1$s</string>
     <string name="my_orders">Мои заказы</string>
+    <string name="order_details">Детали заказа</string>
 </resources>

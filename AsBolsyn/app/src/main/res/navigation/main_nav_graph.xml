@@ -25,6 +25,18 @@
         android:id="@+id/orders_fragment"
         android:name="com.example.asbolsyn.order.presentation.fragment.OrdersFragment"
         android:label="fragment_order"
-        tools:layout="@layout/fragment_order" />
+        tools:layout="@layout/fragment_order">
+
+        <action
+            android:id="@+id/action_ordersFragment_to_orderDetailsFragment"
+            app:destination="@id/order_details_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/order_details_fragment"
+        android:name="com.example.asbolsyn.order.presentation.fragment.OrderDetailsFragment"
+        android:label="fragment_order_details"
+        tools:layout="@layout/fragment_order_details" />
 
 </navigation>

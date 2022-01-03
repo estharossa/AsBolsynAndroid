@@ -48,6 +48,10 @@ class OrderListAdapter(
                     orderStatus.text = context.getString(R.string.order_status_inactive)
                     orderStatus.setTextColor(context.getCompatColor(R.color.color_gray_light))
                 }
+
+                root.setOnClickListener {
+                    onOrderClick()
+                }
             }
         }
     }
