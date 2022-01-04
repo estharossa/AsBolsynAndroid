@@ -6,6 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.asbolsyn.order.data.model.OrderDetailsResponse
 import com.example.asbolsyn.order.domain.usecase.LoadOrderDetails
+import com.example.asbolsyn.order.presentation.adaptermodel.OrderDetailsGuestsAdapterModel
+import com.example.asbolsyn.order.presentation.adaptermodel.OrderDetailsHeaderAdapterModel
+import com.example.asbolsyn.order.presentation.adaptermodel.OrderDetailsMenuAdapterModel
+import com.example.asbolsyn.order.presentation.adaptermodel.OrderDetailsPricingAdapterModel
 import com.example.asbolsyn.utils.delegateadapter.DelegateAdapterItem
 import kotlinx.coroutines.launch
 
@@ -53,7 +57,10 @@ class OrderDetailsViewModel(
 
     private fun generateAdapterItems() = mutableListOf<DelegateAdapterItem>().apply {
         orderDetails?.let {
-
+            add(OrderDetailsHeaderAdapterModel(it))
+            add(OrderDetailsMenuAdapterModel(it))
+            if (it.guestsNumber > 0) add(OrderDetailsGuestsAdapterModel(it))
+            add(OrderDetailsPricingAdapterModel(it))
         }
     }
 

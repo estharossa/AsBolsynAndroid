@@ -11,6 +11,8 @@ data class OrderDetailsResponse(
     @Expose @SerializedName("order_number") val orderNumber: String,
     @Expose @SerializedName("is_active") val isActive: Boolean,
     @Expose @SerializedName("guests_number") val guestsNumber: Int,
+    @Expose @SerializedName("total_price") val totalPrice: Int,
+    @Expose @SerializedName("your_price") val yourPrice: Int,
     @Expose @SerializedName("pricing") val pricingList: List<Pricing>,
     @Expose val guests: List<Guest>,
     @Expose @SerializedName("room_number") val roomNumber: String
@@ -24,6 +26,7 @@ data class OrderDetailsResponse(
 
     data class Guest(
         @Expose val name: String,
+        @Expose @SerializedName("total_price") val totalPrice: Int,
         @Expose @SerializedName("pricing") val pricingList: List<Pricing>
     )
 }

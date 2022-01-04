@@ -43,4 +43,14 @@
     <string name="order_restaurant_fmt">Заведение %1$s</string>
     <string name="my_orders">Мои заказы</string>
     <string name="order_details">Детали заказа</string>
+    <string name="get_restaurant_details">Узнать подробнее о ресторане</string>
+    <string name="order_time_fmt">Время: %1$s, %2$s (%3$s)</string>
+    <string name="checkout_menu"><u>Посмотреть выбранные блюда</u></string>
+    <string name="guests">Гости</string>
+    <string name="chosen_menu">Выбранные блюда</string>
+    <string name="total_price">Итоговая стоимость</string>
+    <string name="your_price">Нужно оплатить Вам</string>
+    <string name="pay">Оплатить</string>
+    <string name="pay_for_friends">Оплатить за друзей</string>
+    <string name="download_fiscal_receipt">Фискальный чек</string>
 </resources>

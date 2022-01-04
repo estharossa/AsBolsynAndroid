@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.asbolsyn.R
 import com.example.asbolsyn.databinding.FragmentOrderDetailsBinding
 import com.example.asbolsyn.order.data.model.OrderItemResponse
-import com.example.asbolsyn.order.presentation.adapter.OrderListAdapter
+import com.example.asbolsyn.order.presentation.adapter.*
 import com.example.asbolsyn.order.presentation.viewmodel.*
 import com.example.asbolsyn.utils.AlertManager
 import com.example.asbolsyn.utils.delegateadapter.CompositeAdapter
@@ -25,11 +26,34 @@ class OrderDetailsFragment : Fragment() {
 
     private val viewModel by viewModel<OrderDetailsViewModel>()
 
-//    private val compositeAdapter by lazy {
-//        CompositeAdapter.Builder().apply {
-//
-//        }.build()
-//    }
+    private val orderDetailsHeaderDelegateAdapter by lazy {
+        OrderDetailsHeaderDelegateAdapter(
+            onDetailsClicked = {
+
+            }
+        )
+    }
+
+    private val orderDetailsGuestsDelegateAdapter by lazy {
+        OrderDetailsGuestsDelegateAdapter()
+    }
+
+    private val orderDetailsMenuDelegateAdapter by lazy {
+        OrderDetailsMenuDelegateAdapter()
+    }
+
+    private val orderDetailsPricingDelegateAdapter by lazy {
+        OrderDetailsPricingDelegateAdapter()
+    }
+
+    private val compositeAdapter by lazy {
+        CompositeAdapter.Builder().apply {
+            add(orderDetailsHeaderDelegateAdapter)
+            add(orderDetailsGuestsDelegateAdapter)
+            add(orderDetailsMenuDelegateAdapter)
+            add(orderDetailsPricingDelegateAdapter)
+        }.build()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,19 +76,25 @@ class OrderDetailsFragment : Fragment() {
     private fun configureObservers() {
         viewModel.orderDetailsState.observe(viewLifecycleOwner) { state ->
             when (state) {
-
+                is OrderDetailsState.LoadingState -> configureLoadingState(state.isLoading)
+                is OrderDetailsState.Error -> showError(state.message) { findNavController().navigateUp() }
+                is OrderDetailsState.SubmitList -> submitList(state.items)
             }
         }
     }
 
     private fun setupViews() {
         with(binding) {
-//            orderDetailsRecyclerView.adapter = compositeAdapter
+            orderDetailsRecyclerView.adapter = compositeAdapter
+
+            backImage.setOnClickListener {
+                findNavController().navigateUp()
+            }
         }
     }
 
     private fun submitList(items: List<DelegateAdapterItem>) {
-
+        compositeAdapter.submitList(items)
     }
 
     private fun showError(message: String? = null, action: (() -> Unit)? = null) {
@@ -78,6 +108,7 @@ class OrderDetailsFragment : Fragment() {
     }
 
     private fun configureLoadingState(isLoading: Boolean) {
-
+        binding.container.isGone = isLoading
+        binding.progressBar.isGone = !isLoading
     }
 }

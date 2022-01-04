@@ -60,6 +60,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:orientation="vertical">
 
             <TextView
@@ -83,5 +84,16 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/details_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_primary_rounded_solid"
+        android:stateListAnimator="@null"
+        android:text="@string/get_restaurant_details"
+        android:textAllCaps="false"
+        android:textColor="@color/color_white"
+        android:textSize="16sp" />
 
 </LinearLayout>
