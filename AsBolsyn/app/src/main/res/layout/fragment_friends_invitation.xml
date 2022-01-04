@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/popup_alert_background"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/invite_friends"
+        android:textColor="@color/color_primary_dark"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/restaurant_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/color_text_main"
+        android:textSize="16sp"
+        tools:text="Заведение: Trattoria" />
+
+    <TextView
+        android:id="@+id/date_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/color_text_main"
+        android:textSize="16sp"
+        tools:text="Дата: 24.01.2020" />
+
+    <TextView
+        android:id="@+id/room_number_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/color_text_main"
+        android:textSize="16sp"
+        tools:text="Код для приглашения друзей: AS8FD" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@null"
+        app:srcCompat="@drawable/ic_qr_invitation" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/invite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_primary_rounded_solid"
+        android:text="@string/share"
+        android:textColor="@color/color_white"
+        android:textSize="16sp" />
+
+</LinearLayout>

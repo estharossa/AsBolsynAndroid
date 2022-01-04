@@ -8,9 +8,23 @@
     tools:context=".order.presentation.fragment.OrdersFragment">
 
     <LinearLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/connect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_primary_light_rounded"
+            android:stateListAnimator="@null"
+            android:text="@string/connect_to_room"
+            android:textAllCaps="false"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/orders_recycler_view"

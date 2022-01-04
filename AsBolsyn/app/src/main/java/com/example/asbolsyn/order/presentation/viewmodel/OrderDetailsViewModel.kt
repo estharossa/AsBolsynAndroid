@@ -30,6 +30,13 @@ class OrderDetailsViewModel(
     fun dispatch(action: OrderDetailsAction) {
         when (action) {
             is OrderDetailsAction.LoadOrderDetails -> loadOrderDetails()
+            is OrderDetailsAction.InviteFriends -> inviteFriends()
+        }
+    }
+
+    private fun inviteFriends() {
+        orderDetails?.let {
+            _orderDetailsState.value = OrderDetailsState.InviteFriends(it)
         }
     }
 
@@ -71,10 +78,12 @@ class OrderDetailsViewModel(
 
 sealed class OrderDetailsAction {
     object LoadOrderDetails : OrderDetailsAction()
+    object InviteFriends : OrderDetailsAction()
 }
 
 sealed class OrderDetailsState {
     data class LoadingState(val isLoading: Boolean) : OrderDetailsState()
     data class SubmitList(val items: List<DelegateAdapterItem>) : OrderDetailsState()
     data class Error(val message: String? = null) : OrderDetailsState()
+    data class InviteFriends(val orderDetails: OrderDetailsResponse) : OrderDetailsState()
 }

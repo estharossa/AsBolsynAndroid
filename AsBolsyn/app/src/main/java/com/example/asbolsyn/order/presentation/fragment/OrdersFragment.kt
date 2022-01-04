@@ -1,5 +1,8 @@
 package com.example.asbolsyn.order.presentation.fragment
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.asbolsyn.R
+import com.example.asbolsyn.databinding.FragmentConnectBinding
+import com.example.asbolsyn.databinding.FragmentFriendsInvitationBinding
 import com.example.asbolsyn.databinding.FragmentOrderBinding
 import com.example.asbolsyn.databinding.LayoutToolbarBinding
 import com.example.asbolsyn.order.data.model.OrderItemResponse
@@ -17,6 +22,9 @@ import com.example.asbolsyn.order.presentation.viewmodel.CabinetOrdersViewModel
 import com.example.asbolsyn.order.presentation.viewmodel.OrderListAction
 import com.example.asbolsyn.order.presentation.viewmodel.OrderListState
 import com.example.asbolsyn.utils.AlertManager
+import com.example.asbolsyn.utils.DateConstants
+import com.example.asbolsyn.utils.extensions.toDate
+import com.example.asbolsyn.utils.extensions.toString
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OrdersFragment : Fragment() {
@@ -69,6 +77,29 @@ class OrdersFragment : Fragment() {
                 adapter = ordersAdapter
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             }
+
+            connect.setOnClickListener {
+                showConnectDialog()
+            }
+        }
+    }
+
+    private fun showConnectDialog() {
+        val binding = FragmentConnectBinding.inflate(LayoutInflater.from(requireContext()))
+        val orderDialog = AlertManager.getCustomAlert(requireContext(), binding.root)
+
+        with(binding) {
+            connect.setOnClickListener {
+                orderDialog.dismiss()
+
+                val direction = OrdersFragmentDirections.actionOrdersFragmentToOrderDetailsFragment()
+                findNavController().navigate(direction)
+            }
+        }
+
+        with(orderDialog) {
+            window?.setBackgroundDrawable(InsetDrawable(ColorDrawable(Color.TRANSPARENT), 20))
+            show()
         }
     }
 
@@ -87,7 +118,7 @@ class OrdersFragment : Fragment() {
     }
 
     private fun configureLoadingState(isLoading: Boolean) {
-        binding.ordersRecyclerView.isGone = isLoading
+        binding.container.isGone = isLoading
         binding.progressBar.isGone = !isLoading
     }
 }
