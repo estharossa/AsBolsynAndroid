@@ -57,4 +57,6 @@
     <string name="connect_to_room">Присоединиться по коду</string>
     <string name="enter_code">Введите код комнаты</string>
     <string name="connect">Присоединиться</string>
+    <string name="add_food">Добавить в меню</string>
+    <string name="restaurant_menu">Меню ресторана</string>
 </resources>

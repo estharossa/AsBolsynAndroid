@@ -1,5 +1,6 @@
 package com.example.asbolsyn.order.data.repository
 
+import com.example.asbolsyn.order.data.model.MenuResponse
 import com.example.asbolsyn.order.data.model.OrderDetailsResponse
 import com.example.asbolsyn.order.data.model.OrderItemResponse
 import com.example.asbolsyn.order.data.service.OrderService
@@ -15,4 +16,6 @@ class OrderRepositoryImpl(
     override suspend fun getOrderList(): Result<List<OrderItemResponse>> = safeApiCall({ service.getOrders() })
     override suspend fun getOrderDetails(id: String): Result<OrderDetailsResponse> =
         safeApiCall({ service.getOrderDetails(id) })
+    override suspend fun getRestaurantMenu(id: String): Result<MenuResponse> =
+        safeApiCall({ service.getRestaurantMenu(id) })
 }

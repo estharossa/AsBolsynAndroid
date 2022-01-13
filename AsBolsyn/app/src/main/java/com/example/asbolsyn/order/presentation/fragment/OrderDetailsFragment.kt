@@ -49,7 +49,12 @@ class OrderDetailsFragment : Fragment() {
     }
 
     private val orderDetailsMenuDelegateAdapter by lazy {
-        OrderDetailsMenuDelegateAdapter()
+        OrderDetailsMenuDelegateAdapter(
+            onAddFood = {
+                val direction = OrderDetailsFragmentDirections.actionOrderDetailsFragmentToMenuRestaurantFragment()
+                findNavController().navigate(direction)
+            }
+        )
     }
 
     private val orderDetailsPricingDelegateAdapter by lazy {

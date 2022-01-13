@@ -15,10 +15,11 @@ import com.example.asbolsyn.utils.delegateadapter.DelegateAdapter
 import com.example.asbolsyn.utils.delegateadapter.DelegateAdapterItem
 import com.example.asbolsyn.utils.extensions.priceString
 
-class OrderDetailsMenuDelegateAdapter :
-    DelegateAdapter<OrderDetailsMenuAdapterModel, OrderDetailsMenuDelegateAdapter.ViewHolder>(
-        OrderDetailsMenuAdapterModel::class.java
-    ) {
+class OrderDetailsMenuDelegateAdapter(
+    private val onAddFood: () -> Unit
+) : DelegateAdapter<OrderDetailsMenuAdapterModel, OrderDetailsMenuDelegateAdapter.ViewHolder>(
+    OrderDetailsMenuAdapterModel::class.java
+) {
 
     override fun createViewHolder(parent: ViewGroup) =
         ViewHolder(
@@ -52,6 +53,10 @@ class OrderDetailsMenuDelegateAdapter :
 
                 createPricingLayout(model.orderDetails.pricingList, root).forEach {
                     pricingLayout.addView(it)
+                }
+
+                addFood.setOnClickListener {
+                    onAddFood()
                 }
             }
         }

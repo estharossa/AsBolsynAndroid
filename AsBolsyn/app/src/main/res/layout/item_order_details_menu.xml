@@ -24,4 +24,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_food"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:background="@drawable/background_primary_light_rounded"
+        android:stateListAnimator="@null"
+        android:text="@string/add_food"
+        android:textAllCaps="false"
+        android:textColor="@color/color_primary"
+        android:textSize="16sp" />
+
 </LinearLayout>

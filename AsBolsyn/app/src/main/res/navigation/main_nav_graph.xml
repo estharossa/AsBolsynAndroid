@@ -37,6 +37,18 @@
         android:id="@+id/order_details_fragment"
         android:name="com.example.asbolsyn.order.presentation.fragment.OrderDetailsFragment"
         android:label="fragment_order_details"
-        tools:layout="@layout/fragment_order_details" />
+        tools:layout="@layout/fragment_order_details">
+
+        <action
+            android:id="@+id/action_orderDetailsFragment_to_menuRestaurantFragment"
+            app:destination="@+id/menu_restaurant_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/menu_restaurant_fragment"
+        android:name="com.example.asbolsyn.order.presentation.fragment.FoodAdditionFragment"
+        android:label="menu_restaurant_fragment"
+        tools:layout="@layout/fragment_food_addition" />
 
 </navigation>
