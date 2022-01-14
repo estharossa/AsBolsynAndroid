@@ -59,4 +59,17 @@
     <string name="connect">Присоединиться</string>
     <string name="add_food">Добавить в меню</string>
     <string name="restaurant_menu">Меню ресторана</string>
+
+    <string name="my_profile">Мой профиль</string>
+    <string name="profile_default_name">Daniyar Amangeldi</string>
+    <string name="profile_default_login">asbolsyn.ie/estharossa</string>
+    <string name="my_account">Мой аккаунт</string>
+    <string name="account_settings_description">Внесите изменения в свой аккаунт</string>
+    <string name="auth_settings">Face ID / Touch ID</string>
+    <string name="auth_settings_description">Управляйте безопасностью вашего устройства</string>
+    <string name="security_settings">Двухфакторная аутентификация</string>
+    <string name="security_settings_description">Дальнейшая защита вашей учетной записи для безопасности</string>
+    <string name="logout">Выход</string>
+    <string name="help">Помощь и поддержка</string>
+    <string name="about">О приложении</string>
 </resources>

@@ -13,7 +13,7 @@ class RestaurantMenuViewModel(
 ) : ViewModel() {
 
     companion object {
-        private const val MOCK_RESTAURANT_ID = "3ff0a4b6-67c3-4e4d-93ed-e8ea161e6d4d \n"
+        private const val MOCK_RESTAURANT_ID = "3ff0a4b6-67c3-4e4d-93ed-e8ea161e6d4d"
     }
 
     private val _menuState = MutableLiveData<MenuState>()
